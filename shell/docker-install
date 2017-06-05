@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+set -e
+
 # link: https://docs.docker.com/engine/installation/linux/ubuntu/#os-requirements
 
 apt-get update

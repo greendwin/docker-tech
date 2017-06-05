@@ -27,6 +27,7 @@ RUN set -ex \
     && apt-get install -y \
         salt-minion \
         docker-ce \
+        python-pip \
     && apt-get autoremove -y \
     && apt-get clean
 

@@ -9,7 +9,7 @@ services:
       - ./salt-master/conf:/etc/salt/master.d
       - salt-master-cache:/var/cache/salt
       - salt-master-pki:/etc/salt/pki
-      - salt-master-logs:/var/logs/salt
+      - salt-master-logs:/var/log/salt
 
   minion:
     image: salt-minion-vs-docker
@@ -18,10 +18,13 @@ services:
       - master:salt
     volumes:
       - ./salt-minion/conf:/etc/salt/minion.d
-      - salt-minion-logs:/var/logs/salt
+      - salt-minion-logs:/var/log/salt
 
       # share minion with outer docker container
       - /run/docker.sock:/run/docker.sock
+
+      # share host directory for further salt-minion work
+      - /data:/data
 
 volumes:
   salt-master-pki:
