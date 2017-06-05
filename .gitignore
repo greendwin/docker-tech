@@ -1,2 +1,3 @@
 .vagrant
+salt-minion/conf/_schedule.conf
 

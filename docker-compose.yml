@@ -1,0 +1,30 @@
+version: '3'
+
+services:
+  master:
+    image: salt-master
+    build: ./salt-master
+    volumes:
+      - ./salt:/srv/salt
+      - ./salt-master/conf:/etc/salt/master.d
+      - salt-master-cache:/var/cache/salt
+      - salt-master-pki:/etc/salt/pki
+      - salt-master-logs:/var/logs/salt
+
+  minion:
+    image: salt-minion-vs-docker
+    build: ./salt-minion
+    links:
+      - master:salt
+    volumes:
+      - ./salt-minion/conf:/etc/salt/minion.d
+      - salt-minion-logs:/var/logs/salt
+
+      # share minion with outer docker container
+      - /run/docker.sock:/run/docker.sock
+
+volumes:
+  salt-master-pki:
+  salt-master-cache:
+  salt-master-logs:
+  salt-minion-logs:
