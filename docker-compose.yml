@@ -2,22 +2,20 @@ version: '3'
 
 services:
   master:
-    image: salt-master
-    build: ./salt-master
+    image: greendwin/salt-master
     volumes:
       - ./salt:/srv/salt
-      - ./salt-master/conf:/etc/salt/master.d
+      - ./master:/etc/salt/master.d
       - salt-master-cache:/var/cache/salt
       - salt-master-pki:/etc/salt/pki
       - salt-master-logs:/var/log/salt
 
   minion:
-    image: salt-minion-vs-docker
-    build: ./salt-minion
+    image: greendwin/salt-minion
     links:
       - master:salt
     volumes:
-      - ./salt-minion/conf:/etc/salt/minion.d
+      - ./minion:/etc/salt/minion.d
       - salt-minion-logs:/var/log/salt
 
       # share minion with outer docker container
