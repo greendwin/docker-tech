@@ -19,18 +19,18 @@ There is a volume with minion configuration:
 
 To share folders on your local system so you can have your own minon configuration use:
 
-    docker run -d \
-        -v /path/to/salt/conf:/etc/salt/minion.d 	\
-        --name salt-minion							\
+    docker run -d                                   \
+        -v /path/to/salt/conf:/etc/salt/minion.d    \
+        --name salt-minion                          \
         greendwin/salt-minion
 
 To use this container as salt/docker bootstrapper use following command:
 
-    docker run -d \
-        -v /path/to/salt/conf:/etc/salt/minion.d 		\
-        -v /var/run/docker.sock:/var/run/docker.sock	\
-        -v /data:/data									\
-        --name salt-minion								\
+    docker run -d                                       \
+        -v /path/to/salt/conf:/etc/salt/minion.d        \
+        -v /var/run/docker.sock:/var/run/docker.sock    \
+        -v /data:/data                                  \
+        --name salt-minion                              \
         greendwin/salt-minion
 
 When you share `/var/run/docker.sock` all calls to docker executes on host side and all volume shares are taken from host too.
