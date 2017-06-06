@@ -24,13 +24,13 @@ To share folders on your local system so you can have your own master
 configuration, states, pillars etc use:
 
     docker run -d \
-    	-v /path/to/salt/conf:/etc/salt/master.d \
-    	-v /path/to/salt/roots:/srv/salt 	 \
-    	-v salt-master-logs:/var/log/salt    \
-    	-v salt-master-cache:/var/salt/cache \
-    	-v salt-master-pki:/etc/salt/pki     \
-    	--name salt-master					 \
-    	greendwin/salt-master
+        -v /path/to/salt/conf:/etc/salt/master.d \
+        -v /path/to/salt/roots:/srv/salt 	 \
+        -v salt-master-logs:/var/log/salt    \
+        -v salt-master-cache:/var/salt/cache \
+        -v salt-master-pki:/etc/salt/pki     \
+        --name salt-master					 \
+        greendwin/salt-master
 
 ## Ports
 
