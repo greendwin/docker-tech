@@ -28,3 +28,16 @@ Test connection to minion and provision minion machine:
 	docker-compose exec master bash
 	$ salt '*' test.ping
 	$ salt '*' state.highstate
+
+## Development startup
+
+To start development version (e.g. with altered docker images) you can use development overrides in `docker-compose.develop.yml`:
+
+    ./compose-develop.sh
+
+or you can do this manually:
+
+    docker-compose                     \
+        -f docker-compose.yml          \
+        -f docker-compose.develop.yml  \
+        up -d --build
