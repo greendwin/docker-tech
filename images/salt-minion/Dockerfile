@@ -12,6 +12,7 @@ RUN set -ex                     \
     && apt-get install -y       \
         salt-minion             \
         python-pip              \
+    && pip install docker-py    \
     && apt-get autoremove -y    \
     && apt-get clean
 
