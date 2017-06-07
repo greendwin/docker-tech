@@ -1,8 +1,7 @@
-# saltstack master container
-
 FROM ubuntu:14.04
 MAINTAINER Evgeniy A. Cymbalyuk <cimbaluk@saber3d.ru>
 
+# link: https://repo.saltstack.com/#ubuntu
 RUN set -ex                           \
     && apt-get update                 \
     && apt-get install -y curl        \
@@ -10,8 +9,9 @@ RUN set -ex                           \
     && echo "deb http://repo.saltstack.com/apt/ubuntu/14.04/amd64/latest trusty main" > /etc/apt/sources.list.d/saltstack.list \
     && apt-get update                 \
     && apt-get install -y salt-master \
+    && apt-get remove -y curl         \
     && apt-get autoremove -y          \
-    && apt-get clean
+    && rm -rf /var/lib/apt/lists/*
 
 # volumes
 VOLUME /etc/salt/pki        \ 
