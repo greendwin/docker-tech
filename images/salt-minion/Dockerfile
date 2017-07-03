@@ -17,7 +17,8 @@ RUN set -ex                     \
     && rm -rf /var/lib/apt/lists/*
 
 # volumes
-VOLUME /etc/salt/minion.d
+VOLUME /etc/salt/minion.d       \
+       /var/log/salt
 
 # entrypoint
 ADD entrypoint.sh /entrypoint.sh

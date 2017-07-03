@@ -14,11 +14,11 @@ RUN set -ex                           \
     && rm -rf /var/lib/apt/lists/*
 
 # volumes
-VOLUME /etc/salt/pki        \ 
-       /var/cache/salt      \
-       /var/logs/salt       \
+VOLUME /var/cache/salt      \
+       /var/log/salt        \
+       /etc/salt/pki        \
        /etc/salt/master.d   \
-       /srv/salt
+       /srv/salt 
 
 # ports
 EXPOSE 4505 4506
